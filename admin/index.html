@@ -1,81 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel — Hesham Site</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-        body { background: #111; color: #fff; font-family: Arial, sans-serif; padding: 30px; }
-        .box { background: #1a1a1a; padding: 18px; margin-bottom: 20px; border-radius: 8px; }
-        input, textarea { width: 100%; padding: 8px; margin: 6px 0; border-radius: 5px; border: none; }
-        button { padding: 10px 18px; border: none; cursor: pointer; border-radius: 6px; margin-top: 8px; }
-        .btn-primary { background: #0af; color: #fff; }
-        .btn-danger { background: #d33; color: #fff; }
-        .muted { opacity: .7; font-size: 14px; }
-        .grid { display: grid; gap: 12px; }
-        .two { grid-template-columns: 1fr 1fr; }
-        hr { border: none; border-bottom: 1px solid #333; margin: 20px 0; }
-        h2 { margin-bottom: 6px; }
-        .note { font-size: 13px; color: #bbb; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Hesham Site</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body{background:#0f1724;color:#e6eef6;font-family:Arial;padding:24px}
+    .wrap{max-width:960px;margin:0 auto}
+    .box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;margin:12px 0}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:transparent;color:inherit}
+    label{font-size:13px;opacity:.8}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    .muted{opacity:.75;font-size:13px}
+    .list .item{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+    .list .item .btn{margin-left:6px}
+  </style>
 </head>
 <body>
+<div class="wrap">
 
-<h1>🔐 Admin Panel</h1>
-<p class="muted">Manage profile photo, projects & publish to GitHub</p>
+  <h1>🔐 Admin</h1>
+  <p class="muted">Password-protected admin to edit public JSON (projects & profile image).</p>
 
-<div id="loginBox" class="box">
-    <h2>Login</h2>
-    <input type="password" id="adminPass" placeholder="Enter admin password">
-    <button onclick="login()" class="btn-primary">Login</button>
-    <p class="note">Default password: <b>hesham2025</b></p>
+  <div id="login" class="box">
+    <h3>Login</h3>
+    <input type="password" id="pass" placeholder="Admin password">
+    <div class="actions">
+      <button class="btn primary" id="loginBtn">Login</button>
+    </div>
+    <p class="muted">Default password: <b>hesham2025</b></p>
+  </div>
+
+  <div id="panel" style="display:none">
+
+    <div class="box">
+      <h3>GitHub Settings</h3>
+      <div class="row">
+        <div><label>Owner</label><input id="ghOwner" value="hesham66"></div>
+        <div><label>Repo</label><input id="ghRepo" value="hesham66.github.io"></div>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <div><label>Branch</label><input id="ghBranch" value="main"></div>
+        <div><label>Path</label><input id="ghPath" value="assets/data/projects.json"></div>
+      </div>
+      <div class="actions" style="margin-top:8px">
+        <input id="ghToken" placeholder="GitHub Token (stored locally)" style="flex:1;min-width:240px">
+        <button class="btn" id="saveToken">Save Token</button>
+        <button class="btn" id="clearToken">Clear Token</button>
+      </div>
+      <p class="muted">Required permission: Repository → Contents: Read & Write.</p>
+    </div>
+
+    <div class="box">
+      <h3>Profile Image</h3>
+      <div class="row">
+        <div><label>Image URL</label><input id="imgUrl" placeholder="https://.../profile.jpg"></div>
+        <div class="actions" style="align-items:end"><button class="btn" id="applyImg">Apply</button></div>
+      </div>
+      <div style="margin-top:8px"><img id="imgPreview" src="../assets/img/profile.png" class="avatar" style="width:140px;height:140px"></div>
+    </div>
+
+    <div class="box">
+      <h3>Add / Edit Project</h3>
+      <div class="row">
+        <div><label>Title</label><input id="ptitle" placeholder="Project title"></div>
+        <div><label>Tags</label><input id="ptags" placeholder="Networking, Security, Python"></div>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <div><label>Image URL</label><input id="pimage" placeholder="https://.../screenshot.png"></div>
+        <div><label>Link</label><input id="plink" placeholder="https://..."></div>
+      </div>
+      <div style="margin-top:8px">
+        <label>Description</label>
+        <textarea id="pdesc" rows="4" placeholder="Short description..."></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="addBtn">Add Project</button>
+        <button class="btn" id="clearBtn">Clear</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Current Projects</h3>
+      <div id="list" class="list"></div>
+      <div class="actions"><button class="btn" id="wipeBtn">Delete All (local edit)</button></div>
+    </div>
+
+    <div class="box">
+      <h3>Publish</h3>
+      <div class="actions">
+        <button class="btn primary" id="publishBtn">Publish to GitHub</button>
+      </div>
+      <p class="muted">This updates <code>assets/data/projects.json</code> on the selected branch.</p>
+    </div>
+
+  </div>
 </div>
 
-<div id="panel" style="display:none">
-
-    <div class="box">
-        <h2>Profile Image</h2>
-        <input type="text" id="profileUrl" placeholder="Direct image link (jpg/png/webp)">
-        <button onclick="updateProfile()" class="btn-primary">Apply</button>
-    </div>
-
-    <div class="box">
-        <h2>Add Project</h2>
-        <input type="text" id="pTitle" placeholder="Project title">
-        <textarea id="pDesc" rows="3" placeholder="Short description"></textarea>
-        <input type="text" id="pLink" placeholder="Demo or GitHub link">
-        <button onclick="addProject()" class="btn-primary">Add</button>
-    </div>
-
-    <div class="box">
-        <h2>Projects</h2>
-        <div id="projectsList" class="muted">Loading...</div>
-    </div>
-
-    <div class="box">
-        <h2>GitHub Token</h2>
-        <input type="text" id="ghToken" placeholder="Paste your GitHub Token">
-        <button onclick="saveToken()" class="btn-primary">Save Token</button>
-        <button onclick="publish()" class="btn-danger">Publish to GitHub</button>
-        <p class="note">Token is stored locally — not uploaded.</p>
-    </div>
-
-</div>
-
-<script src="../assets/js/app.js"></script>
 <script>
-function login(){
-    const pass = document.getElementById('adminPass').value.trim();
-    if(pass === "hesham2025"){
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("panel").style.display = "block";
-    } else {
-        alert("Wrong password!");
-    }
-}
-</script>
+const ADMIN_PASSWORD='hesham2025';
+const PUBLIC_JSON_PATH='../assets/data/projects.json';
+const LS={ token:'gh_pat_token' };
 
+function ensureLogin(){
+  const p = document.getElementById('pass').value.trim();
+  if(p===ADMIN_PASSWORD){
+    document.getElementById('login').style.display='none';
+    document.getElementById('panel').style.display='block';
+    init();
+  }else{
+    alert('Wrong password');
+  }
+}
+document.getElementById('loginBtn').onclick=ensureLogin;
+
+async function fetchPublic(){
+  try{
+    const r = await fetch(PUBLIC_JSON_PATH+'?t='+Date.now());
+    if(!r.ok) throw 0;
+    return await r.json();
+  }catch{
+    return { profileImage:'../assets/img/profile.png', projects:[] };
+  }
+}
+
+function renderList(){
+  const el = document.getElementById('list');
+  el.innerHTML='';
+  if(!working.projects.length){ el.innerHTML='<div class="muted">No projects yet.</div>'; return; }
+  working.projects.forEach((p,i)=>{
+    const row = document.createElement('div');
+    row.className='item card';
+    row.style.padding='10px';
+    row.innerHTML = `
+      <div style="flex:1">
+        <div style="font-weight:600">${p.title||'Untitled'}</div>
+        <div class="muted" style="font-size:13px">${p.description||''}</div>
+        ${p.tags? `<div class="muted" style="font-size:12px;margin-top:4px">Tags: ${p.tags}</div>`:''}
+        ${p.link? `<div style="font-size:12px;margin-top:4px"><a href="${p.link}" target="_blank" rel="noopener">Link</a></div>`:''}
+      </div>
+      <div class="actions">
+        <button class="btn" data-edit="${i}">Edit</button>
+        <button class="btn" data-del="${i}">Delete</button>
+      </div>
+    `;
+    el.appendChild(row);
+  });
+}
+
+let working = { profileImage:'../assets/img/profile.png', projects:[] };
+
+async function init(){
+  // load token
+  const tok = localStorage.getItem(LS.token)||'';
+  document.getElementById('ghToken').value = tok;
+
+  // load current JSON
+  working = await fetchPublic();
+  document.getElementById('imgUrl').value = working.profileImage || '';
+  document.getElementById('imgPreview').src = working.profileImage || '../assets/img/profile.png';
+  renderList();
+}
+
+document.getElementById('saveToken').onclick=()=>{const t=(document.getElementById('ghToken').value||'').trim(); if(!t)return alert('Enter token'); localStorage.setItem(LS.token,t); alert('Token saved locally');};
+document.getElementById('clearToken').onclick=()=>{localStorage.removeItem(LS.token); document.getElementById('ghToken').value=''; alert('Token cleared');};
+
+document.getElementById('applyImg').onclick=()=>{
+  const url=(document.getElementById('imgUrl').value||'').trim();
+  if(!url) return alert('Enter image URL');
+  working.profileImage=url;
+  document.getElementById('imgPreview').src=url;
+  alert('Applied locally. Click Publish to push to GitHub.');
+};
+
+document.getElementById('addBtn').onclick=()=>{
+  const item={
+    title:(document.getElementById('ptitle').value||'').trim(),
+    description:(document.getElementById('pdesc').value||'').trim(),
+    link:(document.getElementById('plink').value||'').trim(),
+    image:(document.getElementById('pimage').value||'').trim(),
+    tags:(document.getElementById('ptags').value||'').trim()
+  };
+  if(!item.title) return alert('Title is required');
+  working.projects.push(item);
+  renderList();
+  alert('Project added locally. Click Publish to push to GitHub.');
+};
+
+document.getElementById('clearBtn').onclick=()=>{ document.getElementById('ptitle').value=''; document.getElementById('pdesc').value=''; document.getElementById('plink').value=''; document.getElementById('pimage').value=''; document.getElementById('ptags').value=''; };
+
+document.getElementById('list').addEventListener('click',(e)=>{
+  const di = e.target.getAttribute('data-del');
+  const ei = e.target.getAttribute('data-edit');
+  if(di!==null){ working.projects.splice(Number(di),1); renderList(); }
+  if(ei!==null){
+    const i=Number(ei), p=working.projects[i];
+    document.getElementById('ptitle').value=p.title||'';
+    document.getElementById('pdesc').value=p.description||'';
+    document.getElementById('plink').value=p.link||'';
+    document.getElementById('pimage').value=p.image||'';
+    document.getElementById('ptags').value=p.tags||'';
+    document.getElementById('addBtn').textContent='Save Changes';
+    document.getElementById('addBtn').onclick=()=>{
+      working.projects[i]={
+        title:(document.getElementById('ptitle').value||'').trim(),
+        description:(document.getElementById('pdesc').value||'').trim(),
+        link:(document.getElementById('plink').value||'').trim(),
+      image:(document.getElementById('pimage').value||'').trim(),
+        tags:(document.getElementById('ptags').value||'').trim()
+      };
+      renderList();
+      document.getElementById('clearBtn').click();
+      document.getElementById('addBtn').textContent='Add Project';
+      document.getElementById('addBtn').onclick=()=>{};
+      document.getElementById('addBtn').onclick=()=>{ // restore add handler
+        const item={
+          title:(document.getElementById('ptitle').value||'').trim(),
+          description:(document.getElementById('pdesc').value||'').trim(),
+          link:(document.getElementById('plink').value||'').trim(),
+          image:(document.getElementById('pimage').value||'').trim(),
+          tags:(document.getElementById('ptags').value||'').trim()
+        };
+        if(!item.title) return alert('Title is required');
+        working.projects.push(item);
+        renderList();
+        alert('Project added locally. Click Publish to push to GitHub.');
+      };
+      alert('Project updated locally. Click Publish to push to GitHub.');
+    };
+  }
+});
+
+document.getElementById('wipeBtn').onclick=()=>{ if(confirm('Delete ALL projects (local edit)?')){ working.projects=[]; renderList(); } };
+
+async function ghGetCurrent(gh,token){
+  const url=`https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${gh.path}?ref=${gh.branch}`;
+  const r=await fetch(url,{headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json'}});
+  if(r.status===404) return { sha:null, contentObj:null };
+  if(!r.ok) throw new Error('GitHub GET failed');
+  const j=await r.json();
+  const content = atob(j.content.replace(/\n/g,''));
+  return { sha:j.sha, contentObj:JSON.parse(content) };
+}
+async function ghPutContent(gh,token,obj,sha=null,msg='Update projects.json'){
+  const url=`https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${gh.path}`;
+  const body={ message:msg, content:btoa(unescape(encodeURIComponent(JSON.stringify(obj,null,2)))), branch:gh.branch };
+  if(sha) body.sha=sha;
+  const r=await fetch(url,{method:'PUT',headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json'},body:JSON.stringify(body)});
+  if(!r.ok) throw new Error('GitHub PUT failed: '+await r.text());
+  return await r.json();
+}
+
+document.getElementById('publishBtn').onclick=async()=>{
+  const token=(document.getElementById('ghToken').value||'').trim() || localStorage.getItem(LS.token);
+  if(!token) return alert('Enter/Save a GitHub token first.');
+  const gh={
+    owner:(document.getElementById('ghOwner').value||'').trim()||'hesham66',
+    repo:(document.getElementById('ghRepo').value||'').trim()||'hesham66.github.io',
+    branch:(document.getElementById('ghBranch').value||'').trim()||'main',
+    path:(document.getElementById('ghPath').value||'').trim()||'assets/data/projects.json'
+  };
+  try{
+    const cur=await ghGetCurrent(gh,token);
+    await ghPutContent(gh,token,{
+      profileImage: working.profileImage || '../assets/img/profile.png',
+      projects: working.projects || []
+    }, cur.sha, 'Update public projects.json via Admin');
+    alert('Published successfully! Refresh the site to see changes.');
+  }catch(e){ alert('Publish failed: '+e.message); console.error(e); }
+};
+</script>
 </body>
 </html>
-
