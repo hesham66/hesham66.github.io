@@ -26,22 +26,25 @@
 
 <main class="container">
 
-  <!-- HERO (image left, text right) -->
- <!-- HERO (avatar right) -->
-<section class="hero card">
-  <div class="hero-text">
-    <h1 class="hero-title" data-i18n="hero_title">Hi, I'm Hesham</h1>
-    
-    <div class="buttons">
-      <a class="btn primary" href="#contact" data-i18n="contact_me">Contact me</a>
+  <!-- HERO (avatar on right desktop / top on mobile) -->
+  <section class="hero card">
+    <div class="hero-text">
+      <h1 class="hero-title" data-i18n="hero_title">Hi, I'm Hesham</h1>
+
+      <p class="lead" data-i18n="hero_lead">
+        IT student specializing in Network Engineering and Cybersecurity.
+        NTI-accredited CCNA holder (MCIT).
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="#contact" data-i18n="contact_me">Contact me</a>
+      </div>
     </div>
-  </div>
 
-  <div class="hero-avatar">
-    <img id="profileImage" src="assets/img/profile.png" alt="Hesham">
-  </div>
-</section>
-
+    <div class="hero-avatar">
+      <img id="profileImage" src="assets/img/profile.png" alt="Hesham Avatar">
+    </div>
+  </section>
 
   <!-- SKILLS -->
   <section id="skills" class="card">
@@ -76,9 +79,6 @@
   <!-- PROJECTS -->
   <section id="projects" class="card">
     <h2 data-i18n="projects">Projects</h2>
-    <p class="muted" data-i18n="projects_help">
-      Projects are loaded from a public JSON (everyone sees them). You can update them from Admin.
-    </p>
     <div id="projectsGrid" class="cards">
       <div class="placeholder" data-i18n="loading">Loading projects...</div>
     </div>
@@ -88,9 +88,15 @@
   <section id="contact" class="card">
     <h2 data-i18n="contact">Contact</h2>
     <div class="contact-grid">
-      <a class="btn" id="emailBtn" href="mailto:your.email@example.com" data-i18n="email_btn">Email</a>
-      <a class="btn" id="linkedinBtn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
-      <a class="btn" id="waBtn" href="https://wa.me/2010XXXXXXX" target="_blank">WhatsApp</a>
+      <a class="contact-btn" href="mailto:abdelhamedhesham93@gmail.com">
+        <span class="icon">📧</span> Email
+      </a>
+      <a class="contact-btn" href="https://linkedin.com/in/hesham-cybersecurity" target="_blank">
+        <span class="icon">🔗</span> LinkedIn
+      </a>
+      <a class="contact-btn" href="https://wa.me/201016591693" target="_blank">
+        <span class="icon">💬</span> WhatsApp
+      </a>
     </div>
   </section>
 
