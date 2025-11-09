@@ -78,4 +78,68 @@ body.light .muted{ color:var(--muted); }
     grid-template-columns: 1fr;  /* 1 column on phones */
   }
 }
+/* ==========================
+   ⭐ Responsive Projects Grid Fix
+   ========================== */
+
+#projectsGrid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+}
+
+/* ✅ Laptop & Desktop */
+@media (min-width: 920px) {
+  .project-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* ✅ Tablet */
+@media (max-width: 920px) {
+  #projectsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-card {
+    width: 92%;
+    margin: 0 auto;
+  }
+}
+
+/* ✅ Mobile Fix (Your B choice: 85% width & centered) */
+@media (max-width: 600px) {
+  #projectsGrid {
+    grid-template-columns: 1fr !important;
+  }
+  .project-card {
+    width: 85% !important;
+    margin: 0 auto !important;
+  }
+  .project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .project-card .tags {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+  .project-card .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+/* ✅ Fix image overflow issue */
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
 
