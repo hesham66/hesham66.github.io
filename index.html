@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Hesham Abdelhamed — Personal Site</title>
+  <title>Hesham Abdelhamed — Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="container">
-
-  <header class="topbar">
+<header class="topbar">
+  <div class="container topbar-inner">
     <div class="brand">
       <div class="logo">H</div>
       <div class="brand-text">
@@ -20,89 +19,85 @@
     </div>
     <div class="actions">
       <button id="langToggle" class="btn small">AR</button>
-      <button id="themeToggle" class="btn small">Toggle Theme</button>
+      <button id="themeToggle" class="btn small">Light Mode</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
+<main class="container">
 
-    <!-- Hero -->
-    <section class="card hero">
-      <div class="hero-text">
-        <h1 class="hero-title" data-i18n="hero_title">Hi, I'm Hesham</h1>
-        <p class="lead" data-i18n="hero_lead">
-          IT student specializing in Network Engineering and Cybersecurity. NTI-accredited CCNA holder (MCIT).
-        </p>
-        <div class="buttons">
-          <a class="btn primary" href="#contact" data-i18n="contact_me">Contact me</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img id="profileImage" src="assets/img/profile.png" alt="Profile" class="avatar">
-        <!-- تم حذف جملة الهنت تحت الصورة بناءً على طلبك -->
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="card">
-      <h2 data-i18n="skills">Skills</h2>
-      <div class="grid">
-        <div class="skill-box">
-          <h3>Networking</h3>
-          <ul>
-            <li>Routing & Switching, VLANs, STP, OSPF</li>
-            <li>Cisco IOS · Packet Tracer · GNS3</li>
-            <li>Basic BGP & network troubleshooting</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <h3 data-i18n="security">Security</h3>
-          <ul>
-            <li>Firewalls, VPN, IDS/IPS</li>
-            <li>TLS/SSL, hashing (bcrypt), RBAC</li>
-          </ul>
-        </div>
-        <div class="skill-box">
-          <h3 data-i18n="systems">Systems</h3>
-          <ul>
-            <li>Windows Server · Active Directory</li>
-            <li>Linux admin (Ubuntu) · VMware</li>
-            <li>Backups & virtualization basics</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="card">
-      <h2 data-i18n="projects">Projects</h2>
-      <p class="muted" data-i18n="projects_help">
-        Projects are loaded from a public JSON (everyone sees them). You can update them from Admin.
+  <!-- HERO (image left, text right) -->
+  <section class="hero card">
+    <div class="hero-image">
+      <img id="profileImage" src="assets/img/profile.png" alt="Hesham">
+    </div>
+    <div class="hero-text">
+      <h1 class="hero-title" data-i18n="hero_title">Hi, I'm Hesham</h1>
+      <p class="lead" data-i18n="hero_lead">
+        IT student specializing in Network Engineering and Cybersecurity. NTI-accredited CCNA holder (MCIT).
       </p>
-      <div id="projectsGrid" class="cards">
-        <div class="placeholder" data-i18n="loading">Loading projects...</div>
+      <div class="buttons">
+        <a class="btn primary" href="#contact" data-i18n="contact_me">Contact me</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="card">
-      <h2 data-i18n="contact">Contact</h2>
-      <div class="contact-grid">
-        <a class="btn" href="mailto:abdelhamedhesham93@gmail.com" data-i18n="email_btn">Email</a>
-       <a class="btn" href="https://www.linkedin.com/in/Hesham-Cybersecurity" target="_blank">LinkedIn</a>
-        <a class="btn" href="https://wa.me/+201016591693" target="_blank">WhatsApp</a>
-
-
+  <!-- SKILLS -->
+  <section id="skills" class="card">
+    <h2 data-i18n="skills">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h3>Networking</h3>
+        <ul>
+          <li>Routing & Switching, VLANs, STP, OSPF</li>
+          <li>Cisco IOS · Packet Tracer · GNS3</li>
+          <li>Basic BGP & network troubleshooting</li>
+        </ul>
       </div>
-    </section>
+      <div class="skill-box">
+        <h3 data-i18n="security">Security</h3>
+        <ul>
+          <li>Firewalls, VPN, IDS/IPS</li>
+          <li>TLS/SSL, hashing (bcrypt), RBAC</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h3 data-i18n="systems">Systems</h3>
+        <ul>
+          <li>Windows Server · Active Directory</li>
+          <li>Linux admin (Ubuntu) · VMware</li>
+          <li>Backups & virtualization basics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-      © <span id="year"></span> Hesham Abdelhamed — All rights reserved
-    </footer>
+  <!-- PROJECTS -->
+  <section id="projects" class="card">
+    <h2 data-i18n="projects">Projects</h2>
+    <p class="muted" data-i18n="projects_help">
+      Projects are loaded from a public JSON (everyone sees them). You can update them from Admin.
+    </p>
+    <div id="projectsGrid" class="cards">
+      <div class="placeholder" data-i18n="loading">Loading projects...</div>
+    </div>
+  </section>
 
-  </main>
+  <!-- CONTACT -->
+  <section id="contact" class="card">
+    <h2 data-i18n="contact">Contact</h2>
+    <div class="contact-grid">
+      <a class="btn" id="emailBtn" href="mailto:your.email@example.com" data-i18n="email_btn">Email</a>
+      <a class="btn" id="linkedinBtn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
+      <a class="btn" id="waBtn" href="https://wa.me/2010XXXXXXX" target="_blank">WhatsApp</a>
+    </div>
+  </section>
 
-</div>
+</main>
+
+<footer class="footer">
+  <div class="container">© <span id="year"></span> Hesham Abdelhamed — All rights reserved</div>
+</footer>
 
 <script src="assets/js/app.js"></script>
 </body>
