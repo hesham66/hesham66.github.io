@@ -26,20 +26,24 @@
 
   <main>
 
+    <!-- Hero -->
     <section class="card hero">
       <div class="hero-text">
         <h1 class="hero-title" data-i18n="hero_title">Hi, I'm Hesham</h1>
-        <p class="lead" data-i18n="hero_lead">IT student specializing in Network Engineering and Cybersecurity. NTI-accredited CCNA holder (MCIT).</p>
+        <p class="lead" data-i18n="hero_lead">
+          IT student specializing in Network Engineering and Cybersecurity. NTI-accredited CCNA holder (MCIT).
+        </p>
         <div class="buttons">
           <a class="btn primary" href="#contact" data-i18n="contact_me">Contact me</a>
         </div>
       </div>
       <div class="hero-media">
         <img id="profileImage" src="assets/img/profile.png" alt="Profile" class="avatar">
-        <div class="hint" data-i18n="img_hint">This photo can be pulled from public JSON or overridden from Admin.</div>
+        <!-- تم حذف جملة الهنت تحت الصورة بناءً على طلبك -->
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills" class="card">
       <h2 data-i18n="skills">Skills</h2>
       <div class="grid">
@@ -69,14 +73,18 @@
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects" class="card">
       <h2 data-i18n="projects">Projects</h2>
-      <p class="muted" data-i18n="projects_help">Projects are loaded from a public JSON (everyone sees them). You can update them from Admin.</p>
+      <p class="muted" data-i18n="projects_help">
+        Projects are loaded from a public JSON (everyone sees them). You can update them from Admin.
+      </p>
       <div id="projectsGrid" class="cards">
         <div class="placeholder" data-i18n="loading">Loading projects...</div>
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="card">
       <h2 data-i18n="contact">Contact</h2>
       <div class="contact-grid">
@@ -93,6 +101,5 @@
 </div>
 
 <script src="assets/js/app.js"></script>
-
 </body>
 </html>
