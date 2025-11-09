@@ -189,3 +189,21 @@ p {
     display: block !important;
   }
 }
+/* ✅ Fix profile avatar for Hero section */
+.hero-media img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ✅ Mobile override */
+@media (max-width: 600px) {
+  .hero-media img {
+    width: 135px;
+    height: 135px;
+  }
+}
