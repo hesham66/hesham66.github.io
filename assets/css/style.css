@@ -57,4 +57,25 @@ body.light{
 body.light .card{ background:var(--card); border:1px solid var(--border); }
 body.light .btn{ background:#e5e9f0; color:#000; }
 body.light .muted{ color:var(--muted); }
+/* ===== Responsive Projects Grid ===== */
+
+#projectsGrid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+}
+
+/* Tablet (max-width: 900px) */
+@media (max-width: 900px) {
+  #projectsGrid {
+    grid-template-columns: 1fr 1fr; /* Still 2 columns */
+  }
+}
+
+/* Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+  #projectsGrid {
+    grid-template-columns: 1fr;  /* 1 column on phones */
+  }
+}
 
