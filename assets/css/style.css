@@ -29,3 +29,32 @@ body.light .topbar{
   background: #fff;
   border-bottom: 1px solid var(--border);
 }
+/* ===== Projects Grid 2×2 on desktop, 1 col on mobile ===== */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:12px;
+}
+@media (max-width:900px){
+  .cards{ grid-template-columns: 1fr; }
+}
+
+/* ===== Tag badges ===== */
+.tag-badges{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; }
+.tag-badge{
+  padding:4px 8px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  font-size:12px;
+  opacity:.95;
+}
+
+/* Light theme (لو مش موجودة) */
+body.light{
+  --bg:#ffffff; --card:#f7f9fc; --text:#0a0a0a; --muted:#4f5b66; --border:rgba(0,0,0,0.1);
+  background:var(--bg); color:var(--text);
+}
+body.light .card{ background:var(--card); border:1px solid var(--border); }
+body.light .btn{ background:#e5e9f0; color:#000; }
+body.light .muted{ color:var(--muted); }
+
