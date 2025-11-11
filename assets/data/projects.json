@@ -7,6 +7,13 @@
       "link": "",
       "image": "https://i.postimg.cc/GtFvTKw8/img.jpg",
       "tags": "Networking, Security, Python, Flask, Monitoring"
+    },
+    {
+      "title": "Multi-Branch Enterprise Network",
+      "description": "Project showcasing full enterprise network design using Cisco Packet Tracer with centralized DHCP, DNS, and Web servers hosted at HQ. Static routing used for connectivity between HQ and branches.",
+      "link": "https://hesham66.github.io/network-project/",
+      "image": "https://i.postimg.cc/RCsVz49y/topology.png",
+      "tags": "Networking, Cisco, Packet Tracer"
     }
   ]
 }
