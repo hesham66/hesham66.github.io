@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise Network Project | Hesham Abdelhamed</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #161b22;
+      text-align: center;
+      padding: 20px 10px;
+      border-bottom: 1px solid #30363d;
+    }
+    header h1 { color: #58a6ff; margin-bottom: 5px; }
+    header p { color: #8b949e; margin: 0; }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid #30363d;
+    }
+    h2 { color: #79c0ff; margin-top: 30px; }
+    ul { margin-left: 20px; }
+    .btn {
+      display: inline-block;
+      background: #238636;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    .btn:hover { background: #2ea043; }
+    footer {
+      text-align: center;
+      color: #8b949e;
+      margin: 50px 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Enterprise Multi-Branch Network Design</h1>
+    <p>By Hesham Abdelhamed | Cisco Packet Tracer Project</p>
+  </header>
+
+  <div class="container">
+    <h2>🔧 Project Overview</h2>
+    <p>
+      This project demonstrates the design and configuration of a complete enterprise-level network using 
+      <strong>Cisco Packet Tracer</strong>. The infrastructure connects multiple branches to a centralized HQ 
+      that hosts DHCP, DNS, and Web Servers. Each branch uses IP Helper to communicate with the HQ services.
+    </p>
+
+    <h2>🌍 Network Topology</h2>
+<img src="topology.png" alt="Network Topology Diagram">
+
+<h2>⚙️ Server Configuration</h2>
+<img src="server-config-DHCP.png" alt="DHCP Server Configuration">
+<img src="server-config-DNS.png" alt="DNS Server Configuration">
+<img src="server-config_web_server.png" alt="Web Server Configuration">
+
+<h2>🧠 Router Configuration</h2>
+<img src="R-HQ-config1.png" alt="HQ Router Configuration Part 1">
+<img src="R-HQ-config2.png" alt="HQ Router Configuration Part 2">
+
+    <h2>📜 Key Features</h2>
+    <ul>
+      <li>Centralized DHCP Server distributing IPs across all branches</li>
+      <li>Internal DNS Server resolving "hesham.local"</li>
+      <li>Web Server hosting an internal company site</li>
+      <li>Static Routing between HQ and branches</li>
+      <li>IP Helper configuration for remote DHCP requests</li>
+    </ul>
+
+    <h2>📥 Download Project</h2>
+    <p>You can download the full Cisco Packet Tracer project file below:</p>
+    <a href="project.pkt" class="btn" download>⬇️ Download .pkt File</a>
+  </div>
+
+  <footer>
+    <p>© 2025 Hesham Abdelhamed | Networking & Cybersecurity Engineer</p>
+  </footer>
+
+</body>
+</html>
+
+
 
