@@ -81,7 +81,7 @@ body.light .topbar{ background:rgba(255,255,255,.7) }
   gap:8px;
 }
 .btn.small{padding:8px 12px; font-size:14px}
-.btn.primary{background:var(--primary); color:#ff0; border-color:transparent}
+.btn.primary{background:var(--primary); color:#fff; border-color:transparent}
 .btn:disabled{opacity:.6; cursor:not-allowed}
 
 /* ---------- Cards / Sections ---------- */
