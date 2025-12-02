@@ -19,7 +19,7 @@
       "title": "ARP Spoofing Detection & Defense System",
       "description": "A full ARP Spoofing detection and defense system using Python, Scapy, and Flask. \nFeatures real-time attack monitoring, dashboard visualization, alert sound, \nred flashing warnings, and automatic ARP table correction for victim devices.",
       "link": "https://heshamcyber00.github.io/-Arp-documentation/",
-      "image": "https://i.postimg.cc/wxR4q6Hg/Screenshot-2025-12-02-041022.png",
+      "image": "https://i.postimg.cc/k4Pr9DZ1/dashboard.png",
       "tags": "Networking, Security, Python, Flask, Scapy"
     }
   ]
